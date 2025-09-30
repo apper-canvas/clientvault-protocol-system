@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { contactService } from '@/services/api/contactService';
+import contactService from '@/services/api/contactService';
 import { dealService } from '@/services/api/dealService';
 import { activityService } from '@/services/api/activityService';
 import { companyService } from '@/services/api/companyService';
