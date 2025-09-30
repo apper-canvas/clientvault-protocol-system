@@ -13,7 +13,12 @@ const [formData, setFormData] = useState({
     email: "",
     phone: "",
     notes: "",
-    tags: []
+    tags: [],
+    job_title: "",
+    source: "",
+    next_follow_up_date: "",
+    linkedin_url: "",
+    address: ""
   });
 
   const [errors, setErrors] = useState({});
@@ -26,16 +31,26 @@ setFormData({
         email: contact.email || "",
         phone: contact.phone || "",
         notes: contact.notes || "",
-        tags: Array.isArray(contact.tags) ? contact.tags : []
+        tags: Array.isArray(contact.tags) ? contact.tags : [],
+        job_title: contact.job_title || "",
+        source: contact.source || "",
+        next_follow_up_date: contact.next_follow_up_date || "",
+        linkedin_url: contact.linkedin_url || "",
+        address: contact.address || ""
       });
-    } else {
+} else {
       setFormData({
         name: "",
         company: "",
         email: "",
         phone: "",
         notes: "",
-        tags: []
+        tags: [],
+        job_title: "",
+        source: "",
+        next_follow_up_date: "",
+        linkedin_url: "",
+        address: ""
       });
     }
     setErrors({});
@@ -139,7 +154,47 @@ setFormData({
                     onChange={(e) => handleChange("phone", e.target.value)}
                     placeholder="+1 (555) 123-4567"
                   />
+</div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <FormField
+                    label="Job Title"
+                    value={formData.job_title}
+                    onChange={(e) => handleChange("job_title", e.target.value)}
+                    placeholder="Senior Developer, Marketing Manager..."
+                  />
+                  
+                  <FormField
+                    label="Source"
+                    value={formData.source}
+                    onChange={(e) => handleChange("source", e.target.value)}
+                    placeholder="LinkedIn, Referral, Website..."
+                  />
                 </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <FormField
+                    label="Next Follow Up Date"
+                    type="date"
+                    value={formData.next_follow_up_date}
+                    onChange={(e) => handleChange("next_follow_up_date", e.target.value)}
+                  />
+                  
+                  <FormField
+                    label="LinkedIn URL"
+                    value={formData.linkedin_url}
+                    onChange={(e) => handleChange("linkedin_url", e.target.value)}
+                    placeholder="https://linkedin.com/in/username"
+                  />
+                </div>
+
+                <FormField
+                  label="Address"
+                  component="textarea"
+                  value={formData.address}
+                  onChange={(e) => handleChange("address", e.target.value)}
+                  placeholder="Street address, city, state, country..."
+                />
 
                 <FormField
                   label="Notes"

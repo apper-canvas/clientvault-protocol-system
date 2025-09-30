@@ -52,7 +52,13 @@ const ContactCard = ({ contact, onClick }) => {
               </div>
               
               {/* Contact Details */}
-              <div className="space-y-1">
+<div className="space-y-1">
+                {contact.job_title && (
+                  <div className="flex items-center space-x-2 text-sm text-secondary-600 mb-2">
+                    <ApperIcon name="Briefcase" size={14} />
+                    <span className="font-medium">{contact.job_title}</span>
+                  </div>
+                )}
                 {contact.email && (
                   <div className="flex items-center space-x-2 text-sm text-secondary-600">
                     <ApperIcon name="Mail" size={14} />
@@ -63,6 +69,12 @@ const ContactCard = ({ contact, onClick }) => {
                   <div className="flex items-center space-x-2 text-sm text-secondary-600">
                     <ApperIcon name="Phone" size={14} />
                     <span>{contact.phone}</span>
+                  </div>
+                )}
+                {contact.next_follow_up_date && (
+                  <div className="flex items-center space-x-2 text-sm text-secondary-600">
+                    <ApperIcon name="Calendar" size={14} />
+                    <span>Follow up: {format(new Date(contact.next_follow_up_date), "MMM d, yyyy")}</span>
                   </div>
                 )}
               </div>

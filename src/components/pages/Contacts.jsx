@@ -43,11 +43,13 @@ const Contacts = () => {
   useEffect(() => {
     let filtered = contacts;
     
-    if (searchTerm) {
+if (searchTerm) {
 filtered = filtered.filter(contact => 
         (contact.name && contact.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
         (contact.company && contact.company.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (contact.email && contact.email.toLowerCase().includes(searchTerm.toLowerCase()))
+        (contact.email && contact.email.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (contact.job_title && contact.job_title.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (contact.source && contact.source.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
     
