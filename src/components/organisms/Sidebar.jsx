@@ -37,9 +37,15 @@ path: "/deals",
     },
     { 
       path: "/activities", 
-      label: "Activities", 
+label: "Activities", 
       icon: "Calendar",
       description: "Track interactions"
+    },
+    { 
+      path: "/reports", 
+      label: "Reports", 
+      icon: "BarChart3",
+      description: "View analytics"
     }
 ];
 

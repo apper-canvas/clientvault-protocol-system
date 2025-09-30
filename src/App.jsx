@@ -14,6 +14,7 @@ import Activities from "@/components/pages/Activities";
 import Contacts from "@/components/pages/Contacts";
 import Companies from "@/components/pages/Companies";
 import Deals from "@/components/pages/Deals";
+import Reports from "@/components/pages/Reports";
 import Header from "@/components/organisms/Header";
 import Sidebar from "@/components/organisms/Sidebar";
 import ChatWidget from "@/components/organisms/ChatWidget";
@@ -162,13 +163,14 @@ return (
             <Header onMenuToggle={toggleSidebar} />
             
             {/* Page Content */}
-            <main className="flex-1 overflow-y-auto">
+<main className="flex-1 overflow-y-auto">
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/contacts" element={<Contacts />} />
                 {userProfile !== 'User' && <Route path="/deals" element={<Deals />} />}
                 <Route path="/activities" element={<Activities />} />
                 <Route path="/companies" element={<Companies />} />
+                <Route path="/reports" element={<Reports />} />
               </Routes>
             </main>
           </div>
