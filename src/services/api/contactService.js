@@ -101,7 +101,7 @@ class ContactService {
     }
   }
 
-  async create(contactData) {
+async create(contactData) {
     try {
       const params = {
         records: [{
@@ -139,7 +139,7 @@ class ContactService {
         if (successful.length > 0) {
           const created = successful[0].data;
           toast.success("Contact created successfully");
-          return {
+          const contactResult = {
             Id: created.Id,
             name: created.name_c || '',
             company: created.company_c || '',
@@ -150,6 +150,33 @@ class ContactService {
             createdAt: created.created_at_c || new Date().toISOString(),
             lastContact: created.last_contact_c || new Date().toISOString()
           };
+          
+          // Sync to CompanyHub CRM (non-blocking)
+          try {
+            const { ApperClient } = window.ApperSDK;
+            const apperClient = new ApperClient({
+              apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+              apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+            });
+            
+            const crmResponse = await apperClient.functions.invoke(
+              import.meta.env.VITE_SYNC_CONTACT_TO_COMPANYHUB,
+              {
+                body: JSON.stringify(contactData),
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              }
+            );
+            
+            if (crmResponse && crmResponse.success) {
+              toast.info("Contact synced to CompanyHub CRM");
+            }
+          } catch (crmError) {
+            console.info(`apper_info: An error was received in this function: ${import.meta.env.VITE_SYNC_CONTACT_TO_COMPANYHUB}. The error is: ${crmError.message}`);
+          }
+          
+          return contactResult;
         }
       }
       return null;
