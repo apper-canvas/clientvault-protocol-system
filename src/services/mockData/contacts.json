@@ -1,0 +1,68 @@
+[
+  {
+    "Id": 1,
+    "name": "Sarah Johnson",
+    "company": "TechCorp Solutions",
+    "email": "sarah.johnson@techcorp.com",
+    "phone": "+1 (555) 123-4567",
+    "notes": "Key decision maker for enterprise software purchases. Interested in our premium package.",
+    "tags": ["Enterprise", "Hot Lead"],
+    "createdAt": "2024-01-15T10:30:00Z",
+    "lastContact": "2024-01-20T14:15:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Michael Chen",
+    "company": "StartupHub Inc",
+    "email": "m.chen@startuphub.com",
+    "phone": "+1 (555) 234-5678",
+    "notes": "Growing startup looking for scalable solutions. Budget conscious but growth potential.",
+    "tags": ["Startup", "Growth"],
+    "createdAt": "2024-01-12T09:45:00Z",
+    "lastContact": "2024-01-18T11:30:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "Emma Rodriguez",
+    "company": "Global Manufacturing",
+    "email": "e.rodriguez@globalmfg.com",
+    "phone": "+1 (555) 345-6789",
+    "notes": "Operations director interested in process optimization tools. Has budget approval authority.",
+    "tags": ["Enterprise", "Manufacturing"],
+    "createdAt": "2024-01-10T16:20:00Z",
+    "lastContact": "2024-01-17T13:45:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "David Park",
+    "company": "Healthcare Plus",
+    "email": "david.park@healthcareplus.com",
+    "phone": "+1 (555) 456-7890",
+    "notes": "IT manager evaluating CRM solutions for medical practice. Compliance requirements important.",
+    "tags": ["Healthcare", "Compliance"],
+    "createdAt": "2024-01-08T11:15:00Z",
+    "lastContact": "2024-01-16T10:00:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "Lisa Thompson",
+    "company": "Creative Agency Co",
+    "email": "lisa@creativeagency.com",
+    "phone": "+1 (555) 567-8901",
+    "notes": "Agency owner looking for client management tools. Values design and user experience.",
+    "tags": ["Agency", "Design"],
+    "createdAt": "2024-01-05T14:30:00Z",
+    "lastContact": "2024-01-15T16:20:00Z"
+  },
+  {
+    "Id": 6,
+    "name": "Robert Wilson",
+    "company": "Financial Services Corp",
+    "email": "r.wilson@finservices.com",
+    "phone": "+1 (555) 678-9012",
+    "notes": "VP of Operations interested in customer relationship tools. Security is top priority.",
+    "tags": ["Finance", "Security"],
+    "createdAt": "2024-01-03T12:45:00Z",
+    "lastContact": "2024-01-14T09:30:00Z"
+  }
+]
