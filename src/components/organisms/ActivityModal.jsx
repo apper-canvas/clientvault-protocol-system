@@ -6,7 +6,7 @@ import ApperIcon from "@/components/ApperIcon";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ActivityModal = ({ activity, contacts, deals, isOpen, onClose, onSave }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     contactId: "",
     dealId: "",
     type: "Call",
@@ -20,7 +20,7 @@ const ActivityModal = ({ activity, contacts, deals, isOpen, onClose, onSave }) =
   useEffect(() => {
     if (activity) {
       setFormData({
-        contactId: activity.contactId || "",
+contactId: activity.contactId || "",
         dealId: activity.dealId || "",
         type: activity.type || "Call",
         description: activity.description || "",

@@ -212,7 +212,7 @@ const Deals = () => {
                       </div>
                     ) : (
                       stageDeals.map((deal) => {
-                        const contact = contacts.find(c => c.Id === deal.contactId);
+const contact = contacts.find(c => c.Id === deal.contactId);
                         return (
                           <DealCard
                             key={deal.Id}

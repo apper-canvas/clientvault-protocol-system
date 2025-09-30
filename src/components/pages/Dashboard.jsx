@@ -48,8 +48,8 @@ const Dashboard = () => {
   if (error) return <Error message={error} onRetry={loadData} />;
 
   const totalPipelineValue = deals
-    .filter(deal => !["Closed Lost", "Closed Won"].includes(deal.stage))
-    .reduce((sum, deal) => sum + deal.value, 0);
+.filter(deal => !["Closed Lost", "Closed Won"].includes(deal.stage))
+    .reduce((sum, deal) => sum + (deal.value || 0), 0);
 
   const activeDeals = deals.filter(deal => 
     !["Closed Lost", "Closed Won"].includes(deal.stage)
@@ -191,7 +191,7 @@ const Dashboard = () => {
               ) : (
                 <div className="space-y-4">
                   {recentActivities.map((activity) => {
-                    const contact = contacts.find(c => c.Id === activity.contactId);
+const contact = contacts.find(c => c.Id === activity.contactId);
                     return (
                       <div key={activity.Id} className="flex items-center space-x-3 p-3 bg-secondary-50 rounded-lg">
                         <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
@@ -199,7 +199,7 @@ const Dashboard = () => {
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium text-secondary-900 truncate">
-                            {activity.type} with {contact?.name || "Unknown Contact"}
+{activity.type} with {contact?.name || "Unknown Contact"}
                           </p>
                           <p className="text-xs text-secondary-500">
                             {format(new Date(activity.date), "MMM d, h:mm a")}
@@ -242,7 +242,7 @@ const Dashboard = () => {
               ) : (
                 <div className="space-y-4">
                   {upcomingTasks.map((task) => {
-                    const contact = contacts.find(c => c.Id === task.contactId);
+const contact = contacts.find(c => c.Id === task.contactId);
                     return (
                       <div key={task.Id} className="flex items-center space-x-3 p-3 bg-accent-50 rounded-lg">
                         <div className="w-8 h-8 bg-gradient-to-r from-accent-500 to-accent-600 rounded-full flex items-center justify-center">
@@ -250,7 +250,7 @@ const Dashboard = () => {
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium text-secondary-900 truncate">
-                            {task.description}
+{task.description}
                           </p>
                           <p className="text-xs text-secondary-500">
                             {contact?.name} • {format(new Date(task.date), "MMM d, h:mm a")}
@@ -283,7 +283,7 @@ const Dashboard = () => {
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {["Lead", "Qualified", "Proposal", "Negotiation", "Closed Won"].map((stage) => {
-                const stageDeals = deals.filter(deal => deal.stage === stage);
+const stageDeals = deals.filter(deal => deal.stage === stage);
                 const stageValue = stageDeals.reduce((sum, deal) => sum + deal.value, 0);
                 
                 return (

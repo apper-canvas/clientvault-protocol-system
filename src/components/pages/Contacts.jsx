@@ -44,10 +44,10 @@ const Contacts = () => {
     let filtered = contacts;
     
     if (searchTerm) {
-      filtered = filtered.filter(contact => 
-        contact.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        contact.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        contact.email.toLowerCase().includes(searchTerm.toLowerCase())
+filtered = filtered.filter(contact => 
+        (contact.name && contact.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (contact.company && contact.company.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (contact.email && contact.email.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
     
@@ -100,8 +100,8 @@ const Contacts = () => {
 
   const getAllTags = () => {
     const tags = new Set();
-    contacts.forEach(contact => {
-      if (contact.tags) {
+contacts.forEach(contact => {
+      if (contact.tags && Array.isArray(contact.tags)) {
         contact.tags.forEach(tag => tags.add(tag));
       }
     });

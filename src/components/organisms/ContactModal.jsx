@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { format } from "date-fns";
 
 const ContactModal = ({ contact, isOpen, onClose, onSave, onDelete }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     name: "",
     company: "",
     email: "",
@@ -20,13 +20,13 @@ const ContactModal = ({ contact, isOpen, onClose, onSave, onDelete }) => {
 
   useEffect(() => {
     if (contact) {
-      setFormData({
+setFormData({
         name: contact.name || "",
         company: contact.company || "",
         email: contact.email || "",
         phone: contact.phone || "",
         notes: contact.notes || "",
-        tags: contact.tags || []
+        tags: Array.isArray(contact.tags) ? contact.tags : []
       });
     } else {
       setFormData({

@@ -8,7 +8,7 @@ import { format } from "date-fns";
 
 const DealModal = ({ deal, contacts, isOpen, onClose, onSave, onDelete }) => {
   const [formData, setFormData] = useState({
-    title: "",
+title: "",
     contactId: "",
     value: "",
     stage: "Lead",
@@ -22,7 +22,7 @@ const DealModal = ({ deal, contacts, isOpen, onClose, onSave, onDelete }) => {
   const stages = ["Lead", "Qualified", "Proposal", "Negotiation", "Closed Won", "Closed Lost"];
 
   useEffect(() => {
-    if (deal) {
+if (deal) {
       setFormData({
         title: deal.title || "",
         contactId: deal.contactId || "",
@@ -67,8 +67,8 @@ const DealModal = ({ deal, contacts, isOpen, onClose, onSave, onDelete }) => {
     if (validateForm()) {
       const dealData = {
         ...formData,
-        value: parseFloat(formData.value),
-        probability: parseInt(formData.probability),
+value: parseFloat(formData.value) || 0,
+        probability: parseInt(formData.probability) || 10,
         expectedClose: formData.expectedClose ? new Date(formData.expectedClose).toISOString() : null
       };
       onSave(dealData);

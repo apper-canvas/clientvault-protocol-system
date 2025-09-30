@@ -57,12 +57,12 @@ const Activities = () => {
     
     if (searchTerm) {
       filtered = filtered.filter(activity => 
-        activity.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        activity.type.toLowerCase().includes(searchTerm.toLowerCase())
+(activity.description && activity.description.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (activity.type && activity.type.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
     
-    if (filterType !== "all") {
+if (filterType !== "all") {
       filtered = filtered.filter(activity => activity.type === filterType);
     }
     
@@ -127,7 +127,7 @@ const Activities = () => {
   };
 
   const getActivityTypes = () => {
-    return [...new Set(activities.map(activity => activity.type))];
+return [...new Set(activities.map(activity => activity.type).filter(type => type))];
   };
 
   if (loading) return <Loading />;
@@ -230,7 +230,7 @@ const Activities = () => {
       ) : (
         <div className="space-y-4">
           {filteredActivities.map((activity, index) => {
-            const contact = contacts.find(c => c.Id === activity.contactId);
+const contact = contacts.find(c => c.Id === activity.contactId);
             const deal = deals.find(d => d.Id === activity.dealId);
             
             return (
@@ -261,19 +261,19 @@ const Activities = () => {
                         <div className="flex items-start justify-between mb-2">
                           <div>
                             <h3 className="text-lg font-semibold text-secondary-900">
-                              {activity.type} - {activity.description}
+{activity.type} - {activity.description}
                             </h3>
                             <div className="flex items-center space-x-4 mt-1 text-sm text-secondary-600">
                               {contact && (
                                 <span className="flex items-center space-x-1">
                                   <ApperIcon name="User" size={14} />
-                                  <span>{contact.name}</span>
+<span>{contact?.name || 'Unknown Contact'}</span>
                                 </span>
                               )}
                               {deal && (
                                 <span className="flex items-center space-x-1">
                                   <ApperIcon name="TrendingUp" size={14} />
-                                  <span>{deal.title}</span>
+<span>{deal?.title || 'No Deal'}</span>
                                 </span>
                               )}
                               <span className="flex items-center space-x-1">
