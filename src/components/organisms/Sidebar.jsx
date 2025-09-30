@@ -25,6 +25,12 @@ const Sidebar = ({ isOpen, onClose }) => {
       icon: "TrendingUp",
       description: "Sales pipeline"
     },
+{ 
+      path: "/companies", 
+      label: "Companies", 
+      icon: "Building",
+      description: "Manage companies"
+    },
     { 
       path: "/activities", 
       label: "Activities", 
