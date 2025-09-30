@@ -26,7 +26,7 @@ const Header = ({ onMenuToggle, title }) => {
           )}
         </div>
         
-        <div className="flex items-center space-x-3">
+<div className="flex items-center space-x-3">
           <div className="flex items-center space-x-3">
             {user && (
               <span className="text-sm text-secondary-700 hidden sm:block">

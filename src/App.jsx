@@ -16,6 +16,7 @@ import Companies from "@/components/pages/Companies";
 import Deals from "@/components/pages/Deals";
 import Header from "@/components/organisms/Header";
 import Sidebar from "@/components/organisms/Sidebar";
+import ChatWidget from "@/components/organisms/ChatWidget";
 
 // Create auth context
 export const AuthContext = createContext(null);
@@ -164,14 +165,17 @@ return (
             <main className="flex-1 overflow-y-auto">
               <Routes>
                 <Route path="/" element={<Dashboard />} />
-<Route path="/contacts" element={<Contacts />} />
+                <Route path="/contacts" element={<Contacts />} />
                 {userProfile !== 'User' && <Route path="/deals" element={<Deals />} />}
-<Route path="/activities" element={<Activities />} />
+                <Route path="/activities" element={<Activities />} />
                 <Route path="/companies" element={<Companies />} />
               </Routes>
             </main>
           </div>
         </div>
+        
+        {/* AI Chat Widget - Global */}
+        <ChatWidget />
       </div>
       
       {/* Toast Notifications */}
