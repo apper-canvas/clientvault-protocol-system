@@ -27,10 +27,10 @@ function AppContent() {
   const [isInitialized, setIsInitialized] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   
-  // Get authentication status with proper error handling
+// Get authentication status with proper error handling
   const userState = useSelector((state) => state.user);
   const isAuthenticated = userState?.isAuthenticated || false;
-  
+  const userProfile = userState?.user?.profile || '';
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -164,8 +164,8 @@ return (
             <main className="flex-1 overflow-y-auto">
               <Routes>
                 <Route path="/" element={<Dashboard />} />
-                <Route path="/contacts" element={<Contacts />} />
-                <Route path="/deals" element={<Deals />} />
+<Route path="/contacts" element={<Contacts />} />
+                {userProfile !== 'User' && <Route path="/deals" element={<Deals />} />}
 <Route path="/activities" element={<Activities />} />
                 <Route path="/companies" element={<Companies />} />
               </Routes>
