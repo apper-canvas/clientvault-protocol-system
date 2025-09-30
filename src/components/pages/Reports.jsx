@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import contactService from '@/services/api/contactService';
-import { dealService } from '@/services/api/dealService';
+import dealService from '@/services/api/dealService';
 import { activityService } from '@/services/api/activityService';
 import { companyService } from '@/services/api/companyService';
 import StatCard from '@/components/molecules/StatCard';
@@ -131,8 +131,8 @@ const Reports = () => {
         />
         <StatCard
           title="Total Deals"
-          value={stats.totalDeals}
-          trend={stats.recentDeals > 0 ? `+${stats.recentDeals} this month` : 'No new deals'}
+value={stats.totalDeals}
+          change={stats.recentDeals > 0 ? `+${stats.recentDeals} this month` : 'No new deals'}
           icon="TrendingUp"
           gradient="from-purple-500 to-pink-500"
         />
