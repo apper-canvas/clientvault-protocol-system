@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from "react";
-import StatCard from "@/components/molecules/StatCard";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/atoms/Card";
-import Button from "@/components/atoms/Button";
-import ApperIcon from "@/components/ApperIcon";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
-import Empty from "@/components/ui/Empty";
+import React, { useEffect, useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/atoms/Card";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
+import companyService from "@/services/api/companyService";
+import ApperIcon from "@/components/ApperIcon";
+import Activities from "@/components/pages/Activities";
+import Button from "@/components/atoms/Button";
+import StatCard from "@/components/molecules/StatCard";
+import Error from "@/components/ui/Error";
+import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
+import activityService from "@/services/api/activityService";
 import contactService from "@/services/api/contactService";
 import dealService from "@/services/api/dealService";
-import activityService from "@/services/api/activityService";
 
 const Dashboard = () => {
-  const [contacts, setContacts] = useState([]);
+const [contacts, setContacts] = useState([]);
+  const [companies, setCompanies] = useState([]);
   const [deals, setDeals] = useState([]);
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,13 +27,15 @@ const Dashboard = () => {
       setLoading(true);
       setError(null);
       
-      const [contactsData, dealsData, activitiesData] = await Promise.all([
+const [contactsData, companiesData, dealsData, activitiesData] = await Promise.all([
         contactService.getAll(),
+        companyService.getAll(),
         dealService.getAll(),
         activityService.getAll()
       ]);
       
       setContacts(contactsData);
+      setCompanies(companiesData);
       setDeals(dealsData);
       setActivities(activitiesData);
     } catch (err) {
@@ -109,7 +114,19 @@ const Dashboard = () => {
           transition={{ delay: 0.1 }}
         >
           <StatCard
-            title="Total Contacts"
+title="Total Contacts"
+            value={contacts.length}
+            icon="Users"
+            color="primary"
+          />
+          <StatCard
+            title="Total Companies"
+            value={companies.length}
+            icon="Building"
+            color="accent"
+          />
+          <StatCard
+            title="Total Deals"
             value={contacts.length}
             change="+12%"
             icon="Users"

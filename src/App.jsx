@@ -12,6 +12,7 @@ import PromptPassword from "@/components/pages/PromptPassword";
 import Dashboard from "@/components/pages/Dashboard";
 import Activities from "@/components/pages/Activities";
 import Contacts from "@/components/pages/Contacts";
+import Companies from "@/components/pages/Companies";
 import Deals from "@/components/pages/Deals";
 import Header from "@/components/organisms/Header";
 import Sidebar from "@/components/organisms/Sidebar";
@@ -165,7 +166,8 @@ return (
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/contacts" element={<Contacts />} />
                 <Route path="/deals" element={<Deals />} />
-                <Route path="/activities" element={<Activities />} />
+<Route path="/activities" element={<Activities />} />
+                <Route path="/companies" element={<Companies />} />
               </Routes>
             </main>
           </div>
