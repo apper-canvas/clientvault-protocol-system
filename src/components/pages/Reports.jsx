@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import contactService from '@/services/api/contactService';
-import dealService from '@/services/api/dealService';
-import { activityService } from '@/services/api/activityService';
-import { companyService } from '@/services/api/companyService';
-import StatCard from '@/components/molecules/StatCard';
-import Loading from '@/components/ui/Loading';
-import Error from '@/components/ui/Error';
-import Empty from '@/components/ui/Empty';
+import React, { useEffect, useState } from "react";
+import Activities from "@/components/pages/Activities";
+import Companies from "@/components/pages/Companies";
+import Contacts from "@/components/pages/Contacts";
+import Deals from "@/components/pages/Deals";
+import StatCard from "@/components/molecules/StatCard";
+import Error from "@/components/ui/Error";
+import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
+import activityService from "@/services/api/activityService";
+import contactService from "@/services/api/contactService";
+import companyService from "@/services/api/companyService";
+import dealService from "@/services/api/dealService";
 
 const Reports = () => {
   const [stats, setStats] = useState(null);
