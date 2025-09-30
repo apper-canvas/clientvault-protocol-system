@@ -92,14 +92,18 @@ class CompanyService {
       // Only include Updateable fields
       const payload = {
         records: [{
-          name_c: companyData.name_c,
-          description_c: companyData.description_c,
-          address_c: companyData.address_c,
-          city_c: companyData.city_c,
-          state_c: companyData.state_c,
-          zip_code_c: companyData.zip_code_c,
-          phone_c: companyData.phone_c,
-          Tags: companyData.Tags
+// Only include fields with actual values
+          ...(companyData.name_c && { name_c: companyData.name_c }),
+          ...(companyData.description_c && { description_c: companyData.description_c }),
+          ...(companyData.address_c && { address_c: companyData.address_c }),
+          ...(companyData.city_c && { city_c: companyData.city_c }),
+          ...(companyData.state_c && { state_c: companyData.state_c }),
+          ...(companyData.zip_code_c && { zip_code_c: companyData.zip_code_c }),
+          ...(companyData.phone_c && { phone_c: companyData.phone_c }),
+          // Convert Tags array to comma-separated string for multi-selection field
+          ...(companyData.Tags && companyData.Tags.length > 0 && { 
+            Tags: Array.isArray(companyData.Tags) ? companyData.Tags.join(',') : companyData.Tags 
+          })
         }]
       };
 
